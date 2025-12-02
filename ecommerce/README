@@ -1,0 +1,185 @@
+# 🛒 E-Commerce Backend (Spring Boot + JWT + MySQL)
+A complete production-ready **E-Commerce Backend API** built using **Spring Boot 3.5.8**, **Java 21**, **MySQL**, **JWT Authentication**, and **RESTful best practices**.
+
+This project is designed for real-world backend developer expectations:  
+user authentication, role-based access, product management, cart, order flow, validation, exception handling, pagination, sorting, filtering, logging, and clean architecture.
+
+---
+
+## 🚀 Technologies Used
+- **Java 21**
+- **Spring Boot 3.5.8**
+- **Spring Data JPA**
+- **Spring Security + JWT**
+- **MySQL**
+- **ModelMapper**
+- **Lombok**
+- **SLF4J Logging**
+- **Maven**
+
+---
+
+## 📁 Project Structure
+src/main/java/com/anantha/ecommerce
+│
+├── config/
+│ └── AppConfig.java
+│
+├── security/
+│ ├── SecurityConfig.java
+│ ├── JWTUtil.java
+│ ├── JWTFilter.java
+│ └── CustomUserDetailsService.java
+│
+├── entity/
+│ ├── User.java
+│ ├── Role.java
+│ ├── Product.java
+│ ├── Cart.java
+│ ├── CartItem.java
+│ ├── Order.java
+│ └── OrderItem.java
+│
+├── dto/
+│ ├── UserRegisterDTO.java
+│ ├── LoginRequestDTO.java
+│ ├── ProductDTO.java
+│ └── OrderDTO.java
+│
+├── repository/
+│ ├── UserRepository.java
+│ ├── RoleRepository.java
+│ ├── ProductRepository.java
+│ ├── CartRepository.java
+│ └── OrderRepository.java
+│
+├── service/
+│ ├── UserService.java
+│ ├── ProductService.java
+│ ├── CartService.java
+│ └── OrderService.java
+│
+├── service/impl/
+│ ├── UserServiceImpl.java
+│ ├── ProductServiceImpl.java
+│ ├── CartServiceImpl.java
+│ └── OrderServiceImpl.java
+│
+└── controller/
+├── AuthController.java
+├── ProductController.java
+├── CartController.java
+└── OrderController.java
+
+
+---
+
+## 🧩 Features
+
+### 🔐 **Authentication & Authorization**
+- User Registration / Login
+- JWT Authentication
+- Role Based Access (USER, ADMIN)
+- Password Encryption (BCrypt)
+
+### 👨‍💼 **User Module**
+- Create account
+- Login to get JWT token
+- View profile
+- Admin can view all users
+
+### 🛒 **Product Module**
+- Add product (ADMIN)
+- Update/Delete product (ADMIN)
+- View all products
+- Pagination + Sorting + Filtering
+
+### 🧺 **Cart Module**
+- Add item to cart
+- Update quantity
+- Remove item
+- Auto calculate total
+
+### 📦 **Order Module**
+- Place order from cart
+- Order summary
+- Order history for user
+- Admin can view all orders
+
+### 📝 Other Highlights
+- Global Exception Handling
+- Custom Exceptions
+- Request Validation
+- Logging using SLF4J
+- DTO + Entity Mapping
+
+---
+
+## ⚙️ How to Run Project Locally
+
+### 1️⃣ Clone Repo
+```sh
+git clone https://github.com/AnanthaMahadevan0603/ecommerce-backend.git
+cd ecommerce-backend
+
+2️⃣ Configure MySQL (application.properties)
+spring.datasource.url=jdbc:mysql://localhost:3306/ecommerce
+spring.datasource.username=YOUR_MYSQL_USER
+spring.datasource.password=YOUR_MYSQL_PASSWORD
+spring.jpa.hibernate.ddl-auto=update
+
+jwt.secret=YOUR_SECRET_KEY
+jwt.expiration=86400000
+
+3️⃣ Run the Project
+
+From terminal:
+
+mvn spring-boot:run
+
+
+OR from Eclipse:
+➡ Right click project → Run As → Spring Boot App
+
+🧪 API Endpoints (Main)
+Auth APIs
+Method	Endpoint	Description
+POST	/api/auth/register	Register new user
+POST	/api/auth/login	Login + get JWT
+Product APIs
+Method	Endpoint	Description
+POST	/api/products	Add product (ADMIN)
+GET	/api/products	List products (pagination/filter)
+PUT	/api/products/{id}	Update product
+DELETE	/api/products/{id}	Delete product
+Cart APIs
+Method	Endpoint	Description
+POST	/api/cart/add	Add item
+PUT	/api/cart/update	Update quantity
+DELETE	/api/cart/remove/{id}	Remove item
+GET	/api/cart	View cart
+Order APIs
+Method	Endpoint	Description
+POST	/api/orders	Place order
+GET	/api/orders	User order history
+GET	/api/orders/all	Admin: all orders
+📦 Database Diagram (Simplified)
+User (1) ----- (Many) Orders
+User (1) ----- (One) Cart
+Cart (1) ----- (Many) CartItems
+Order (1) ---- (Many) OrderItems
+Product (1) -- (Many) CartItems
+Product (1) -- (Many) OrderItems
+User (Many) -- (Many) Role
+
+🤝 Contributing
+
+Pull requests are welcome. For major changes, please open an issue first.
+
+🧑‍💻 Author
+
+Anantha Mahadevan
+Backend Developer (Java + Spring Boot)
+GitHub: https://github.com/AnanthaMahadevan0603
+
+LinkedIn: https://www.linkedin.com/in/ananthamahadevanmurugan
